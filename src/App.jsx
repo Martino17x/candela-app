@@ -27,6 +27,8 @@ export default function App() {
   const [datosContacto, setDatosContacto] = useLocalStorage('candela-contact-data', CONTACT_DEFAULTS);
   const [datosCarta, setDatosCarta] = useLocalStorage('candela-cover-letter-data', COVER_INITIAL);
   const [selectedCV, setSelectedCV] = useLocalStorage('candela-selected-cv', 'cv-administrativa-recepcionista');
+  const [fotoDataUrl, setFotoDataUrl] = useLocalStorage('candela-foto', null);
+  const [incluirFoto, setIncluirFoto] = useLocalStorage('candela-incluir-foto', false);
   const [modo, setModo] = useState('cv');
   const [htmlActual, setHtmlActual] = useState('');
   const [descargando, setDescargando] = useState(false);
@@ -58,7 +60,14 @@ export default function App() {
 
       <main className="app-main">
         <div className="app-col-left">
-          <ContactForm datos={datosContacto} onChange={setDatosContacto} />
+          <ContactForm
+            datos={datosContacto}
+            onChange={setDatosContacto}
+            fotoDataUrl={fotoDataUrl}
+            onFotoChange={setFotoDataUrl}
+            incluirFoto={incluirFoto}
+            onIncluirFotoChange={setIncluirFoto}
+          />
           <CVSelector selectedCV={selectedCV} onSelect={setSelectedCV} />
           <CoverLetterEditor datos={datosCarta} onChange={setDatosCarta} />
         </div>
@@ -71,6 +80,8 @@ export default function App() {
               selectedCV={selectedCV}
               datosContacto={datosContacto}
               datosCarta={datosCarta}
+              fotoDataUrl={fotoDataUrl}
+              incluirFoto={incluirFoto}
               onHTMLReady={handleHTMLReady}
             />
           </div>

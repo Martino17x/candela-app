@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { generarHTMLActual } from '../utils/templateLoader';
 
-export function PreviewPane({ modo, onModoChange, selectedCV, datosContacto, datosCarta, onHTMLReady }) {
+export function PreviewPane({ modo, onModoChange, selectedCV, datosContacto, datosCarta, fotoDataUrl, incluirFoto, onHTMLReady }) {
   const [htmlFinal, setHtmlFinal] = useState('');
   const [error, setError] = useState(null);
   const [cargando, setCargando] = useState(false);
@@ -14,7 +14,7 @@ export function PreviewPane({ modo, onModoChange, selectedCV, datosContacto, dat
 
     (async () => {
       try {
-        const html = await generarHTMLActual(modo, selectedCV, datosContacto, datosCarta);
+        const html = await generarHTMLActual(modo, selectedCV, datosContacto, datosCarta, fotoDataUrl, incluirFoto);
         if (!cancelado) {
           setHtmlFinal(html);
           onHTMLReady?.(html);
@@ -32,7 +32,7 @@ export function PreviewPane({ modo, onModoChange, selectedCV, datosContacto, dat
     return () => {
       cancelado = true;
     };
-  }, [modo, selectedCV, datosContacto, datosCarta, onHTMLReady]);
+  }, [modo, selectedCV, datosContacto, datosCarta, fotoDataUrl, incluirFoto, onHTMLReady]);
 
   return (
     <div className="preview-pane">

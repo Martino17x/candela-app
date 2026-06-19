@@ -30,6 +30,30 @@
             margin-bottom: 6pt;
         }
 
+        .cv-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16pt;
+        }
+
+        .cv-header-text {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .cv-header-photo img.foto-perfil {
+            width: 70pt;
+            height: 87.5pt;
+            object-fit: cover;
+            border-radius: 4pt;
+            border: 1pt solid #ddd;
+        }
+
+        .cv-header-photo:empty {
+            display: none;
+        }
+
         h1 {
             font-size: 17pt;
             font-weight: 700;
@@ -200,15 +224,20 @@
     <main class="cv">
 
         <header>
-            <h1>CANDELA GONZÁLEZ</h1>
-            <p class="titulo-profesional">Atención al Cliente · Customer Service · Asesor de Contact Center</p>
-            <p class="datos-contacto">
-                Córdoba Capital – Zona General Paz
-                <span class="sep">|</span>
-                gcande720@gmail.com
-                <span class="sep">|</span>
-                (3549) 559939
-            </p>
+            <div class="cv-header">
+                <div class="cv-header-text">
+                    <h1>CANDELA GONZÁLEZ</h1>
+                    <p class="titulo-profesional">Atención al Cliente · Customer Service · Asesor de Contact Center</p>
+                    <p class="datos-contacto">
+                        Córdoba Capital – Zona General Paz
+                        <span class="sep">|</span>
+                        gcande720@gmail.com
+                        <span class="sep">|</span>
+                        (3549) 559939
+                    </p>
+                </div>
+                <div class="cv-header-photo">{{FOTO}}</div>
+            </div>
         </header>
 
         <section class="perfil">

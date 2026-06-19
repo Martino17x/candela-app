@@ -20,7 +20,7 @@ function escapeRegex(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-export function aplicarReemplazosCV(html, datos) {
+export function aplicarReemplazosCV(html, datos, fotoDataUrl = null, incluirFoto = false) {
   const parser = new DOMParser();
   const doc = parser.parseFromString(html, 'text/html');
 
@@ -64,7 +64,22 @@ export function aplicarReemplazosCV(html, datos) {
     }
   }
 
-  return '<!DOCTYPE html>\n' + doc.documentElement.outerHTML;
+  const photoContainer = doc.querySelector('.cv-header-photo');
+  if (photoContainer) {
+    photoContainer.innerHTML = (incluirFoto && fotoDataUrl)
+      ? `<img class="foto-perfil" src="${fotoDataUrl}" alt="Foto de Candela" />`
+      : '';
+  }
+
+  let result = '<!DOCTYPE html>\n' + doc.documentElement.outerHTML;
+  if (!photoContainer) {
+    const fotoHtml = (incluirFoto && fotoDataUrl)
+      ? `<img class="foto-perfil" src="${fotoDataUrl}" alt="Foto de Candela" />`
+      : '';
+    result = result.replace(/\{\{FOTO\}\}/g, fotoHtml);
+  }
+
+  return result;
 }
 
 export function aplicarReemplazosCarta(html, datosContacto, datosCarta) {
@@ -135,10 +150,10 @@ export function inyectarEstilosImpresion(html) {
   return `<style>${printCss}</style>${html}`;
 }
 
-export async function generarHTMLActual(modo, selectedCV, datosContacto, datosCarta) {
+export async function generarHTMLActual(modo, selectedCV, datosContacto, datosCarta, fotoDataUrl = null, incluirFoto = false) {
   if (modo === 'cv') {
     const raw = await cargarTemplate(`${selectedCV}.html`);
-    return aplicarReemplazosCV(raw, datosContacto);
+    return aplicarReemplazosCV(raw, datosContacto, fotoDataUrl, incluirFoto);
   }
   const raw = await cargarTemplate('carta-presentacion.html');
   return aplicarReemplazosCarta(raw, datosContacto, datosCarta);

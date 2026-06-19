@@ -1,5 +1,17 @@
-export function ContactForm({ datos, onChange }) {
+import { PhotoUploader } from './PhotoUploader';
+
+export function ContactForm({
+  datos,
+  onChange,
+  fotoDataUrl,
+  onFotoChange,
+  incluirFoto,
+  onIncluirFotoChange,
+}) {
   const handle = (campo) => (e) => onChange({ ...datos, [campo]: e.target.value });
+
+  const handleIncluirFoto = (e) => onIncluirFotoChange(e.target.checked);
+  const tieneFoto = Boolean(fotoDataUrl);
 
   return (
     <section className="card">
@@ -7,6 +19,25 @@ export function ContactForm({ datos, onChange }) {
       <p className="card-subtitle">
         Editá tus datos. Se guardan automáticamente en este navegador.
       </p>
+
+      <div className="contact-photo-section">
+        <PhotoUploader fotoDataUrl={fotoDataUrl} onFotoChange={onFotoChange} />
+
+        <label className="field field-checkbox">
+          <input
+            type="checkbox"
+            checked={incluirFoto && tieneFoto}
+            disabled={!tieneFoto}
+            onChange={handleIncluirFoto}
+          />
+          <span>Incluir foto en el CV</span>
+        </label>
+        <p className="field-help muted">
+          {tieneFoto
+            ? 'Activá esto solo cuando vayas a imprimir o entregar en mano. Para LinkedIn/CompuTrabajo dejalo apagado.'
+            : 'Subí una foto para activar esta opción.'}
+        </p>
+      </div>
 
       <div className="field">
         <label htmlFor="contact-nombre">Nombre completo</label>
