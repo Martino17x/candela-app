@@ -86,49 +86,64 @@ export function aplicarReemplazosCarta(html, datosContacto, datosCarta) {
   const parser = new DOMParser();
   const doc = parser.parseFromString(html, 'text/html');
 
-  doc.querySelectorAll('.remitente, .firma').forEach((bloque) => {
-    const strong = bloque.querySelector('strong');
-    if (strong && datosContacto.nombre) {
-      strong.textContent = datosContacto.nombre;
+  const mapaKeys = {
+    empresa: 'EMPRESA',
+    puesto: 'PUESTO',
+    fuenteContacto: 'FUENTE_CONTACTO',
+    areaODestinatario: 'AREA_O_DESTINATARIO',
+    ciudad: 'CIUDAD',
+    fecha: 'FECHA'
+  };
+
+  const agregarLinea = (parent, texto) => {
+    parent.appendChild(doc.createElement('br'));
+    parent.appendChild(doc.createTextNode(texto));
+  };
+
+  const reconstruirBloque = (bloque) => {
+    bloque.innerHTML = '';
+
+    const strong = doc.createElement('strong');
+    strong.textContent = datosContacto.nombre || '';
+    bloque.appendChild(strong);
+
+    if (datosContacto.zona) {
+      agregarLinea(bloque, datosContacto.zona);
     }
 
-    const children = Array.from(bloque.childNodes);
-    for (const node of children) {
-      if (node.nodeType === Node.TEXT_NODE) {
-        const txt = node.textContent;
-        if (txt.includes('@') || txt.includes('3549') || /Capital|General Paz/i.test(txt)) {
-          const lines = [];
-          if (datosContacto.zona) lines.push(datosContacto.zona);
-          if (datosContacto.email) lines.push(datosContacto.email);
-          if (datosContacto.telefono) lines.push(datosContacto.telefono);
-          if (datosContacto.linkedin && datosContacto.linkedin.trim()) {
-            lines.push(datosContacto.linkedin);
-          }
-          const frag = doc.createDocumentFragment();
-          lines.forEach((line, idx) => {
-            if (idx > 0) frag.appendChild(doc.createElement('br'));
-            frag.appendChild(doc.createTextNode(line));
-          });
-          bloque.replaceChild(frag, node);
-          break;
-        }
-      }
+    const contactoParts = [];
+    if (datosContacto.email) contactoParts.push(datosContacto.email);
+    if (datosContacto.telefono) contactoParts.push(datosContacto.telefono);
+    if (contactoParts.length > 0) {
+      agregarLinea(bloque, contactoParts.join(' · '));
     }
-  });
+
+    if (datosContacto.linkedin && datosContacto.linkedin.trim()) {
+      bloque.appendChild(doc.createElement('br'));
+      const link = doc.createElement('a');
+      link.href = datosContacto.linkedin.startsWith('http')
+        ? datosContacto.linkedin
+        : `https://${datosContacto.linkedin}`;
+      link.textContent = datosContacto.linkedin;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      bloque.appendChild(link);
+    }
+  };
+
+  doc.querySelectorAll('.remitente, .firma').forEach(reconstruirBloque);
 
   let result = '<!DOCTYPE html>\n' + doc.documentElement.outerHTML;
 
-  for (const [key, value] of Object.entries(datosCarta)) {
-    if (value && String(value).trim()) {
-      const safe = escapeHtml(value);
-      const spanRegex = new RegExp(
-        String.raw`<span class="placeholder">\{\{${escapeRegex(key)}\}\}</span>`,
-        'g'
-      );
-      result = result.replace(spanRegex, safe);
-      const placeholder = `{{${key}}}`;
-      result = result.replace(new RegExp(escapeRegex(placeholder), 'g'), safe);
-    }
+  for (const [formKey, placeholderKey] of Object.entries(mapaKeys)) {
+    const safe = escapeHtml(datosCarta[formKey] || '');
+    const spanRegex = new RegExp(
+      String.raw`<span class="placeholder">\{\{${escapeRegex(placeholderKey)}\}\}</span>`,
+      'g'
+    );
+    result = result.replace(spanRegex, safe);
+    const placeholder = `{{${placeholderKey}}}`;
+    result = result.replace(new RegExp(escapeRegex(placeholder), 'g'), safe);
   }
 
   return result;
