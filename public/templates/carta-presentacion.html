@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta de presentación - Candela González</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 11pt;
+            line-height: 1.55;
+            color: #1a1a1a;
+            background: #fff;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .carta {
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 18mm 22mm;
+            background: #fff;
+        }
+
+        .remitente {
+            margin-bottom: 18pt;
+            font-size: 10pt;
+            color: #4b5563;
+        }
+
+        .remitente strong {
+            color: #1a1a1a;
+            font-size: 11pt;
+            display: block;
+            margin-bottom: 2pt;
+        }
+
+        .destinatario {
+            margin-bottom: 16pt;
+            font-size: 10.5pt;
+            color: #4b5563;
+        }
+
+        .destinatario strong {
+            color: #1a1a1a;
+        }
+
+        .asunto {
+            font-weight: 700;
+            color: #1e3a5f;
+            font-size: 11pt;
+            margin-bottom: 14pt;
+            padding-bottom: 6pt;
+            border-bottom: 1pt solid #1e3a5f;
+        }
+
+        .saludo { margin-bottom: 12pt; }
+
+        .cuerpo p {
+            margin-bottom: 11pt;
+            text-align: justify;
+            color: #1f2937;
+        }
+
+        .cierre {
+            margin-top: 16pt;
+            line-height: 1.5;
+        }
+
+        .firma {
+            margin-top: 28pt;
+            border-top: 1pt solid #d1d5db;
+            padding-top: 8pt;
+            max-width: 60%;
+            font-size: 10pt;
+            color: #4b5563;
+        }
+
+        .firma strong {
+            color: #1a1a1a;
+            font-size: 10.5pt;
+            display: block;
+        }
+
+        .placeholder {
+            background: #fef3c7;
+            color: #92400e;
+            padding: 1pt 4pt;
+            border-radius: 2pt;
+            font-family: 'Courier New', monospace;
+            font-size: 9.5pt;
+            font-weight: 600;
+        }
+
+        .guia {
+            font-size: 9pt;
+            color: #6b7280;
+            font-style: italic;
+            margin-top: 14pt;
+            padding-top: 8pt;
+            border-top: 1pt dashed #d1d5db;
+        }
+
+        .guia strong { color: #1e3a5f; }
+
+        @media print {
+            body { margin: 0; padding: 0; }
+            .carta { margin: 0; padding: 18mm 20mm; max-width: 100%; }
+            .guia { display: none; }
+            @page { size: A4; margin: 0; }
+        }
+
+        @media screen and (max-width: 600px) {
+            .carta { padding: 14mm 12mm; }
+            .firma { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <main class="carta">
+
+        <div class="remitente">
+            <strong>Candela González</strong>
+            Córdoba Capital – Zona General Paz<br>
+            gcande720@gmail.com · (3549) 559939
+        </div>
+
+        <div class="destinatario">
+            <strong>{{EMPRESA}}</strong><br>
+            <span class="placeholder">{{AREA_O_DESTINATARIO}}</span> &middot; Córdoba Capital – Zona General Paz<br>
+            <span class="placeholder">{{CIUDAD}}</span>, <span class="placeholder">{{FECHA}}</span>
+        </div>
+
+        <p class="asunto">
+            Ref.: Postulación al puesto de <span class="placeholder">{{PUESTO}}</span>
+        </p>
+
+        <p class="saludo">
+            Estimados/as de <span class="placeholder">{{EMPRESA}}</span>:
+        </p>
+
+        <div class="cuerpo">
+            <p>
+                Me dirijo a ustedes para postularme al puesto de <span class="placeholder">{{PUESTO}}</span>
+                publicado en <span class="placeholder">{{FUENTE_CONTACTO}}</span>. Soy Candela González, técnica
+                en Economía y Administración, con más de cinco años de experiencia en atención al cliente,
+                gestión administrativa, control de stock y ventas en comercios físicos. Me mudé recientemente
+                a la zona de General Paz, en Córdoba Capital, y cuento con disponibilidad inmediata para incorporarme.
+            </p>
+
+            <p>
+                A lo largo de mi trayectoria en librerías, regalería y un emprendimiento propio, desarrollé
+                habilidades en <strong>gestión de consultas, organización administrativa, control de inventario,
+                reposición de mercadería y atención al cliente tanto presencial como por canales digitales</strong>.
+                Trabajé con planillas de registro, control de caja y seguimiento de pedidos, siempre con foco en
+                la eficiencia operativa y la satisfacción del cliente. Considero que mi perfil encaja con los
+                requisitos del puesto y con el ritmo de trabajo de <span class="placeholder">{{EMPRESA}}</span>.
+            </p>
+
+            <p>
+                Adjunto mi currículum vitae para que conozcan más en detalle mi experiencia. Quedo a su
+                disposición para ampliar cualquier información o coordinar una entrevista cuando lo consideren
+                conveniente. Agradezco el tiempo dedicado a leer mi postulación y espero tener la oportunidad
+                de sumarme al equipo.
+            </p>
+        </div>
+
+        <div class="cierre">
+            Cordialmente,
+        </div>
+
+        <div class="firma">
+            <strong>Candela González</strong>
+            Córdoba Capital – Zona General Paz<br>
+            gcande720@gmail.com · (3549) 559939
+        </div>
+
+        <p class="guia">
+            <strong>Guía rápida de placeholders:</strong>
+            <span class="placeholder">{{EMPRESA}}</span> nombre de la empresa ·
+            <span class="placeholder">{{PUESTO}}</span> puesto al que se postula ·
+            <span class="placeholder">{{FUENTE_CONTACTO}}</span> donde vio la oferta (LinkedIn, Bumeran, Indeed, recomendación, etc.) ·
+            <span class="placeholder">{{AREA_O_DESTINATARIO}}</span> RR.HH. o nombre del reclutador ·
+            <span class="placeholder">{{CIUDAD}}</span> y
+            <span class="placeholder">{{FECHA}}</span> ciudad y fecha de envío.
+        </p>
+
+    </main>
+</body>
+</html>

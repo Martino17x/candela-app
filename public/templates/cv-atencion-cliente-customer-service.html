@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Candela González - Atención al Cliente / Customer Service</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 10pt;
+            line-height: 1.3;
+            color: #1a1a1a;
+            background: #fff;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .cv {
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 1.2cm;
+            background: #fff;
+        }
+
+        header {
+            border-bottom: 2pt solid #1e3a5f;
+            padding-bottom: 5pt;
+            margin-bottom: 6pt;
+        }
+
+        h1 {
+            font-size: 17pt;
+            font-weight: 700;
+            color: #1e3a5f;
+            margin-bottom: 1pt;
+        }
+
+        .titulo-profesional {
+            font-size: 10pt;
+            color: #4b5563;
+            font-weight: 600;
+            margin-bottom: 2pt;
+        }
+
+        .datos-contacto {
+            font-size: 9.5pt;
+            color: #4b5563;
+        }
+
+        .datos-contacto .sep {
+            margin: 0 6pt;
+            color: #9ca3af;
+        }
+
+        section { margin-bottom: 6pt; }
+
+        h2 {
+            font-size: 10.5pt;
+            font-weight: 700;
+            color: #1e3a5f;
+            text-transform: uppercase;
+            letter-spacing: 0.8pt;
+            border-bottom: 1pt solid #d1d5db;
+            padding-bottom: 2pt;
+            margin-bottom: 4pt;
+        }
+
+        .perfil p {
+            font-size: 10pt;
+            line-height: 1.3;
+            text-align: justify;
+            color: #1f2937;
+        }
+
+        .job-block { margin-bottom: 6pt; }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 1pt 8pt;
+            margin-bottom: 1pt;
+        }
+
+        .job-title {
+            font-weight: 700;
+            font-size: 10.2pt;
+            color: #1a1a1a;
+        }
+
+        .company {
+            font-weight: 600;
+            font-size: 9.8pt;
+            color: #4b5563;
+        }
+
+        .job-date {
+            font-size: 9pt;
+            color: #6b7280;
+            font-style: italic;
+        }
+
+        .job-status {
+            font-size: 8.5pt;
+            color: #6b7280;
+            font-style: italic;
+            margin: 0 0 1pt 0;
+        }
+
+        .job-block ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 1pt;
+        }
+
+        .job-block li {
+            font-size: 9.8pt;
+            line-height: 1.28;
+            color: #1f2937;
+            margin-bottom: 1pt;
+            padding-left: 10pt;
+            position: relative;
+        }
+
+        .job-block li::before {
+            content: "▸";
+            color: #1e3a5f;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .edu-block {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0 6pt;
+            margin-bottom: 2pt;
+        }
+
+        .degree {
+            font-weight: 700;
+            font-size: 10pt;
+            color: #1a1a1a;
+        }
+
+        .institution {
+            font-size: 9.5pt;
+            color: #4b5563;
+        }
+
+        .edu-date {
+            font-size: 9pt;
+            color: #6b7280;
+            font-style: italic;
+            margin-left: auto;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1pt 16pt;
+            font-size: 9.8pt;
+            line-height: 1.3;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .grid-2 li {
+            padding-left: 9pt;
+            position: relative;
+        }
+
+        .grid-2 li::before {
+            content: "•";
+            color: #1e3a5f;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        @media print {
+            body { margin: 0; padding: 0; }
+            .cv { margin: 0; padding: 1.2cm; max-width: 100%; }
+            section, .job-block, .edu-block { page-break-inside: avoid; break-inside: avoid; }
+            @page { size: A4; margin: 0; }
+        }
+
+        @media screen and (max-width: 600px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            .job-header { flex-direction: column; align-items: flex-start; }
+            .edu-date { margin-left: 0; }
+        }
+    </style>
+</head>
+<body>
+    <main class="cv">
+
+        <header>
+            <h1>CANDELA GONZÁLEZ</h1>
+            <p class="titulo-profesional">Atención al Cliente · Customer Service · Asesor de Contact Center</p>
+            <p class="datos-contacto">
+                Córdoba Capital – Zona General Paz
+                <span class="sep">|</span>
+                gcande720@gmail.com
+                <span class="sep">|</span>
+                (3549) 559939
+            </p>
+        </header>
+
+        <section class="perfil">
+            <h2>Perfil profesional</h2>
+            <p>
+                Orientada a atención al cliente y service desk, con experiencia en mostrador, canales digitales
+                y seguimiento de consultas hasta su resolución. Me destaco por la comunicación efectiva, la
+                escucha activa y la fidelización, logrando experiencias de compra ágiles y satisfactorias. Manejo
+                objeciones, postventa y derivación de casos. <strong>Me mudé recientemente a Córdoba Capital
+                por decisión personal, cuento con disponibilidad inmediata y no tengo inconvenientes de
+                relocalización.</strong>
+            </p>
+        </section>
+
+        <section>
+            <h2>Experiencia laboral</h2>
+
+            <article class="job-block">
+                <div class="job-header">
+                    <div>
+                        <span class="job-title">Atención al cliente, gestión de stock y redes sociales</span>
+                        <span class="company"> · Origami Librería</span>
+                    </div>
+                    <span class="job-date">Nov 2024 – Ago 2025</span>
+                </div>
+                <ul>
+                    <li>Brindé atención personalizada en mostrador y por canales digitales, logrando una experiencia de compra ágil y satisfactoria.</li>
+                    <li>Gestioné el seguimiento de consultas y la resolución de reclamos, registrando cada caso para su trazabilidad.</li>
+                    <li>Respondí consultas por redes sociales en el día y coordiné reposición de mercadería según la demanda.</li>
+                </ul>
+            </article>
+
+            <article class="job-block">
+                <div class="job-header">
+                    <div>
+                        <span class="job-title">Emprendedora y responsable de operaciones</span>
+                        <span class="company"> · Chocobajonero</span>
+                    </div>
+                    <span class="job-date">Dic 2023 – Ago 2025</span>
+                </div>
+                <p class="job-status">En pausa por mudanza a Córdoba Capital.</p>
+                <ul>
+                    <li>Fidelicé una cartera recurrente de clientes mediante seguimiento de consultas y atención postventa, sosteniendo la recompra.</li>
+                    <li>Gestioné la comunicación de marca y la respuesta a consultas en redes, con interacción diaria y derivación oportuna de pedidos.</li>
+                    <li>Organicé la atención de pedidos y entregas, cumpliendo con los plazos y tratando cada pedido con dedicación personalizada.</li>
+                </ul>
+            </article>
+
+            <article class="job-block">
+                <div class="job-header">
+                    <div>
+                        <span class="job-title">Vendedora y asistente comercial</span>
+                        <span class="company"> · Angelicos Regalería y Sublimación</span>
+                    </div>
+                    <span class="job-date">Ene 2021 – Feb 2024</span>
+                </div>
+                <ul>
+                    <li>Asesoré a clientes en la selección de regalos y productos personalizados, acompañando la decisión de compra con información clara.</li>
+                    <li>Gestioné consultas por múltiples canales y mantuve seguimiento hasta la entrega satisfactoria, garantizando la conformidad.</li>
+                    <li>Atendí picos de demanda en fechas especiales, manteniendo calidad de servicio y orden en la atención.</li>
+                </ul>
+            </article>
+
+            <article class="job-block">
+                <div class="job-header">
+                    <div>
+                        <span class="job-title">Atención al cliente y control de stock</span>
+                        <span class="company"> · MOE'S Bebidas</span>
+                    </div>
+                    <span class="job-date">Ago 2019 – Feb 2020</span>
+                </div>
+                <ul>
+                    <li>Atendí clientes en vinoteca, asesorando sobre productos y resolviendo consultas de forma inmediata y profesional.</li>
+                    <li>Gestioné el control de stock y la reposición, asegurando disponibilidad de productos para responder a la demanda diaria.</li>
+                </ul>
+            </article>
+        </section>
+
+        <section>
+            <h2>Formación</h2>
+
+            <article class="edu-block">
+                <span class="degree">Bachiller en Economía y Administración</span>
+                <span class="institution">· IPEM 273 Manuel Belgrano</span>
+                <span class="edu-date">2015 – 2021</span>
+            </article>
+
+            <article class="edu-block">
+                <span class="degree">Tecnicatura Superior en Diseño de Espacios <span style="font-weight:400; color:#6b7280;">(En curso)</span></span>
+                <span class="institution">· ESBA – Roberto Viola</span>
+                <span class="edu-date">2025 – Actualidad</span>
+            </article>
+
+            <article class="edu-block">
+                <span class="degree">Introducción a la Programación Web</span>
+                <span class="institution">· UNLaR – Universidad Nacional de La Rioja</span>
+                <span class="edu-date">Septiembre 2024</span>
+            </article>
+
+            <article class="edu-block">
+                <span class="degree">Inglés Inicial</span>
+                <span class="institution">· Portal de Capacitación Integral de la Provincia</span>
+                <span class="edu-date">Marzo 2023</span>
+            </article>
+        </section>
+
+        <section>
+            <h2>Competencias</h2>
+            <ul class="grid-2">
+                <li>Atención al cliente (presencial y remota)</li>
+                <li>Seguimiento y resolución de consultas</li>
+                <li>Comunicación efectiva y escucha activa</li>
+                <li>Fidelización de clientes</li>
+                <li>Gestión de reclamos y postventa</li>
+                <li>Manejo de objeciones</li>
+                <li>Redes sociales (atención y respuesta)</li>
+                <li>Resolución de problemas</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Idiomas</h2>
+            <ul class="grid-2">
+                <li>Español — Nativo</li>
+                <li>Inglés — Inicial (A2)</li>
+            </ul>
+        </section>
+
+    </main>
+</body>
+</html>
